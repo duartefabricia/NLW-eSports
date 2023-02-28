@@ -1,0 +1,177 @@
+* {
+    margin: 0;
+    padding: 0;
+    /* border box mantem o tamanho do max width */
+    box-sizing: border-box;
+}
+
+ul {
+    /* tira a formatação de lista (pontinhos) */
+    list-style: none;
+}
+
+body {
+    background-image: url(./assets/bg.jpg);
+    background-position: top center;
+    /* 100% é referente a largura no redimensionamento da imagem e auto para a altura ser automática */
+    background-size: 100% auto;
+    /* no repeat para a imagem não se repetir */
+    background-repeat: no-repeat;
+    background-color: #121214;
+}
+
+body * {
+    font-family: Inter, sans-serif;
+    line-height: 160%;
+}
+
+/* text-align funciona também com imagens pois as reconhece como texto, exceto com div que não possui propriedade de texto*/
+header {
+    margin-top: 32px;
+    /* definir a altura do header com função de calculo */
+    height: calc(120px +32px);
+}
+
+header div {
+    width: 120px;
+    margin: auto;
+    background-image: linear-gradient(90deg, #9572FC 0%, #43E7AD 50.52%, #E2D45C 100% );
+
+    border-radius: 50%;
+    display: flex ;
+    padding: 4px;
+    /* transition para suavizar o efeito de "pulsar" */
+    transition: transform .3s;
+}
+
+header div:hover{
+    transform: scale(1.2);
+}
+
+header img {
+    width: 100%;
+    border-radius: 50%;
+}
+
+main {
+    max-width: 580px;
+    /* width espaço que vai ocupar na tela */
+    width: 90%;
+    /* quando se tem dois valores no margin ele usa o primeiro para cima e baixo e o segundo para as laterais*/
+    margin: 32px auto;
+    
+    display: grid;
+    gap: 24px;
+    
+}
+
+section {
+    color: white;
+    background-image: linear-gradient(90deg, #9572FC 0%, #43E7AD 50.52%, #E2D45C 100% );
+    padding-top: 4px;
+    border-radius: 10px;
+}
+
+section div {
+    background-color: #2A2634;
+    padding: 32px;
+    padding-top: 24px;
+    border-radius: 8px;
+}
+
+section h2 {
+    font-weight: 900;
+    font-size: 24px;
+    letter-spacing: -0.47px;
+}
+
+section p {
+    font-weight: 400;
+    font-size: 16px;
+    letter-spacing: -0.18px;
+    color: #A1A1AA;
+}
+
+section ul {
+    /* flex - todos os elementos da caixa ficam um ao lado do outro */
+    display: flex;
+    /* wrap - quando houver muitos elementos ele irá colocar os próximos abaixo */
+    flex-wrap: wrap;
+    /* define um espaçamento entre os itens e só funciona com o elemento display */
+    gap: 16px;
+    margin-top: 24px;
+}
+
+section ul li{
+    transition: transform .3s;
+}
+
+section ul li:hover{
+    transform: scale(1.3);
+}
+
+.games-list img {
+    width: 90px;
+    border-radius: 8px;
+}
+
+.channel-list img {
+    width: 70px;
+    border-radius: 50%;
+    border: 1px solid #443E54;
+}
+
+/* animation */
+
+/* elemento que deseja aplicar a animação e a duração 
+o delay pode ser inserido logo após a duração da animação
+ex: .7s 1s
+
+backwards faz com que a animação comece com todas as
+propriedades definidas abaixo*/
+
+header div {
+    animation: fromTop .7s .2s backwards;
+}
+
+@keyframes fromTop {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    /* translate 0 - posição final do objeto */
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+main section {
+    animation: fromBottom .7s .2s backwards;
+}
+
+/* seleciona a primeira seção ou primeiro filho */
+main section:nth-child(1) {
+    animation-delay: .0s;
+}
+
+main section:nth-child(2) {
+    animation-delay: .4s;
+}
+
+main section:nth-child(3) {
+    animation-delay: .8s;
+}
+
+
+@keyframes fromBottom {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    /* translate 0 - posição final do objeto */
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
